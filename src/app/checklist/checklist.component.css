@@ -1,0 +1,258 @@
+/* Base styles with refined typography and colors */
+
+/* Directly applying colors and properties */
+.checklist-container {
+    --primary-color: #3a5a78;  /* Business blue */
+    --accent-color: #d4a670;   /* Warm leisure gold */
+    --light-gray: #f5f7fa;
+    --medium-gray: #dfe4ea;
+    --dark-gray: #6c757d;
+    --success-color: #52b788;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.checklist-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.checklist-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #3a5a78, #d4a670);
+}
+
+.app-title {
+    font-size: 1.8rem;
+    color: #3a5a78;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    padding: 10px 15px;
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #3a5a78;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #52b788;
+    border-color: #52b788;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Item label styling */
+label {
+    font-size: 1rem;
+    cursor: pointer;
+    flex-grow: 1;
+    transition: all 0.3s ease;
+}
+
+.checked {
+    text-decoration: line-through;
+    color: #6c757d;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Add item form */
+.add-item {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #dfe4ea;
+}
+
+input[type="text"], select {
+    padding: 10px 15px;
+    border: 2px solid #dfe4ea;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+}
+
+select {
+    background-color: white;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #3a5a78;
+    box-shadow: 0 0 0 3px rgba(58, 90, 120, 0.2);
+}
+
+button {
+    background-color: #3a5a78;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #2d4861;
+    transform: translateY(-2px);
+}
+
+/* Reset button styling */
+.reset-container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.reset-button {
+    background-color: #6c757d;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+}
+
+.reset-button:hover {
+    background-color: #566470;
+}
+
+/* Category styling */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 10px;
+    color: #3a5a78;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.category-header::before {
+    content: '';
+    height: 18px;
+    width: 5px;
+    background-color: #d4a670;
+    border-radius: 3px;
+}
+
+/* Priority indicators */
+.priority-high {
+    position: relative;
+}
+
+.priority-high::after {
+    content: '!';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Progress bar */
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #dfe4ea;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3a5a78, #d4a670);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .checklist-container {
+        max-width: 95%;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .app-title {
+        font-size: 1.5rem;
+    }
+}
