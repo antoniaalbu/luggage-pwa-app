@@ -1,0 +1,87 @@
+<div class="checklist-container">
+    <h2 class="app-title">🧳 Luggage Checklist</h2>
+  
+    <!-- Progress tracking bar -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width]="getProgressPercentage() + '%'"></div>
+      </div>
+      <div class="progress-text">
+        <span>{{ getCompletedCount() }} of {{ items.length }} packed</span>
+        <span>{{ getProgressPercentage() }}%</span>
+      </div>
+    </div>
+  
+    <!-- Essentials category -->
+    <div class="category-header">Essentials</div>
+    <ul>
+      <li *ngFor="let item of getItemsByCategory('essentials'); let i = index" 
+          [class.priority-high]="item.priority === 'high'">
+        <input type="checkbox" [checked]="item.checked" (change)="toggleItem(getItemIndex(item))" />
+        <label [class.checked]="item.checked">{{ item.name }}</label>
+        <button (click)="removeItem(getItemIndex(item))">❌</button>
+      </li>
+    </ul>
+  
+    <!-- Clothing category -->
+    <div class="category-header">Clothing</div>
+    <ul>
+      <li *ngFor="let item of getItemsByCategory('clothing'); let i = index"
+          [class.priority-high]="item.priority === 'high'">
+        <input type="checkbox" [checked]="item.checked" (change)="toggleItem(getItemIndex(item))" />
+        <label [class.checked]="item.checked">{{ item.name }}</label>
+        <button (click)="removeItem(getItemIndex(item))">❌</button>
+      </li>
+    </ul>
+  
+    <!-- Toiletries category -->
+    <div class="category-header">Toiletries</div>
+    <ul>
+      <li *ngFor="let item of getItemsByCategory('toiletries'); let i = index"
+          [class.priority-high]="item.priority === 'high'">
+        <input type="checkbox" [checked]="item.checked" (change)="toggleItem(getItemIndex(item))" />
+        <label [class.checked]="item.checked">{{ item.name }}</label>
+        <button (click)="removeItem(getItemIndex(item))">❌</button>
+      </li>
+    </ul>
+  
+    <!-- Electronics category -->
+    <div class="category-header">Electronics</div>
+    <ul>
+      <li *ngFor="let item of getItemsByCategory('electronics'); let i = index"
+          [class.priority-high]="item.priority === 'high'">
+        <input type="checkbox" [checked]="item.checked" (change)="toggleItem(getItemIndex(item))" />
+        <label [class.checked]="item.checked">{{ item.name }}</label>
+        <button (click)="removeItem(getItemIndex(item))">❌</button>
+      </li>
+    </ul>
+  
+    <!-- Other items category -->
+    <div class="category-header">Other Items</div>
+    <ul>
+      <li *ngFor="let item of getItemsByCategory('other'); let i = index"
+          [class.priority-high]="item.priority === 'high'">
+        <input type="checkbox" [checked]="item.checked" (change)="toggleItem(getItemIndex(item))" />
+        <label [class.checked]="item.checked">{{ item.name }}</label>
+        <button (click)="removeItem(getItemIndex(item))">❌</button>
+      </li>
+    </ul>
+  
+    <!-- Add new item form -->
+    <div class="add-item">
+      <input type="text" [(ngModel)]="newItem" placeholder="Add new item..." />
+      <select [(ngModel)]="newItemCategory">
+        <option value="essentials">Essentials</option>
+        <option value="clothing">Clothing</option>
+        <option value="toiletries">Toiletries</option>
+        <option value="electronics">Electronics</option>
+        <option value="other">Other</option>
+      </select>
+      <button (click)="addItem()">Add</button>
+    </div>
+    
+    <!-- Reset button -->
+    <div class="reset-container">
+      <button class="reset-button" (click)="resetToDefaults()">Reset Checklist</button>
+    </div>
+  </div>
