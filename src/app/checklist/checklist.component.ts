@@ -17,18 +17,17 @@ interface ChecklistItem {
   imports: [CommonModule, FormsModule]
 })
 export class LuggageChecklistComponent implements OnInit {
-  // Storage key for localStorage
+  
   readonly storageKey: string = 'luggage-checklist-items';
   
-  // Default items that will be used on first run
   defaultItems: ChecklistItem[] = [
-    // Essentials
+    
     { name: 'Passport', checked: false, category: 'essentials', priority: 'high' },
     { name: 'Wallet', checked: false, category: 'essentials', priority: 'high' },
     { name: 'Phone & Charger', checked: false, category: 'essentials', priority: 'high' },
     { name: 'Travel Documents', checked: false, category: 'essentials', priority: 'high' },
     
-    // Clothing
+   
     { name: 'T-shirts', checked: false, category: 'clothing' },
     { name: 'Pants/Shorts', checked: false, category: 'clothing' },
     { name: 'Underwear', checked: false, category: 'clothing' },
@@ -36,23 +35,23 @@ export class LuggageChecklistComponent implements OnInit {
     { name: 'Business Attire', checked: false, category: 'clothing' },
     { name: 'Casual Outfits', checked: false, category: 'clothing' },
     
-    // Toiletries
+  
     { name: 'Toothbrush', checked: false, category: 'toiletries' },
     { name: 'Toothpaste', checked: false, category: 'toiletries' },
     { name: 'Deodorant', checked: false, category: 'toiletries' },
     { name: 'Shampoo', checked: false, category: 'toiletries' },
     
-    // Electronics
-    { name: 'Laptop', checked: false, category: 'electronics', priority: 'high' },
+    
+    { name: 'Laptop', checked: false, category: 'electronics',  },
     { name: 'Headphones', checked: false, category: 'electronics' },
     { name: 'Camera', checked: false, category: 'electronics' },
     
-    // Other
+    
     { name: 'Books/Reading Material', checked: false, category: 'other' },
     { name: 'Snacks', checked: false, category: 'other' }
   ];
   
-  // Current items (will be loaded from localStorage or defaults)
+  
   items: ChecklistItem[] = [];
   
   newItem: string = '';
@@ -66,15 +65,15 @@ export class LuggageChecklistComponent implements OnInit {
         this.items = parsed;
       } else {
         this.items = [...this.defaultItems];
-        this.saveToStorage(); // Save the defaults on first run
+        this.saveToStorage(); 
       }
     } else {
       this.items = [...this.defaultItems];
-      this.saveToStorage(); // Save the defaults on first run
+      this.saveToStorage(); 
     }
   }
   
-  // Save current items to localStorage
+ 
   saveToStorage(): void {
     localStorage.setItem(this.storageKey, JSON.stringify(this.items));
   }
@@ -87,23 +86,22 @@ export class LuggageChecklistComponent implements OnInit {
         category: this.newItemCategory
       });
       this.newItem = '';
-      this.saveToStorage(); // Save after adding item
+      this.saveToStorage(); 
     }
   }
   
   removeItem(index: number) {
     this.items.splice(index, 1);
-    this.saveToStorage(); // Save after removing item
+    this.saveToStorage(); 
   }
   
   toggleItem(index: number) {
-    // Get the current state
+    
     const currentChecked = this.items[index].checked;
     
     // Toggle the state (this will update the checkbox, cross out the text, and update the progress bar)
     this.items[index].checked = !currentChecked;
     
-    // Save to localStorage
     this.saveToStorage();
   }
   
@@ -124,9 +122,5 @@ export class LuggageChecklistComponent implements OnInit {
     return Math.round((this.getCompletedCount() / this.items.length) * 100);
   }
   
-  // Method to reset checklist to default items
-  resetToDefaults(): void {
-    this.items = JSON.parse(JSON.stringify(this.defaultItems)); // Deep clone defaults
-    this.saveToStorage();
-  }
+  
 }
