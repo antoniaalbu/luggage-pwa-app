@@ -122,5 +122,8 @@ export class LuggageChecklistComponent implements OnInit {
     return Math.round((this.getCompletedCount() / this.items.length) * 100);
   }
   
-  
+  resetToDefaults(): void {
+    this.items = JSON.parse(JSON.stringify(this.defaultItems));
+    this.saveToStorage();
+  }
 }
