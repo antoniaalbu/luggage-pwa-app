@@ -255,4 +255,9 @@ button:hover {
     .app-title {
         font-size: 1.5rem;
     }
+
+    .add-item{
+        display: flex;
+        flex-direction: column;
+    }
 }
