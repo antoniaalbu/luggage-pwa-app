@@ -67,8 +67,8 @@ li {
 }
 
 li:hover {
-    transform: translateX(5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #d8e6f9;
 }
 
 /* Checkboxes */
@@ -118,6 +118,7 @@ label {
 .add-item {
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
     padding-top: 15px;
     border-top: 1px solid #dfe4ea;
@@ -202,20 +203,32 @@ button:hover {
     position: relative;
 }
 
-.priority-high::after {
-    content: '!';
+.high-priority {
+    font-weight: bold;
+    color: #d9534f; /* Bootstrap's danger red */
+  }
+
+.checkbox-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    background-color: #e74c3c;
-    color: white;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: bold;
-    margin-left: 10px;
-}
+  }
+  
+  .checkbox-wrapper.priority-high::after {
+      content: '!';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background-color: #e74c3c;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 6px;
+  }
+  
 
 /* Progress bar */
 .progress-container {

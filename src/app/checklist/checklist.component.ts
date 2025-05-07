@@ -56,6 +56,8 @@ export class LuggageChecklistComponent implements OnInit {
   
   newItem: string = '';
   newItemCategory: string = 'essentials';
+  newItemPriority: 'normal' | 'high' = 'normal';
+
   
   ngOnInit(): void {
     const saved = localStorage.getItem(this.storageKey);
@@ -83,12 +85,15 @@ export class LuggageChecklistComponent implements OnInit {
       this.items.push({
         name: this.newItem,
         checked: false,
-        category: this.newItemCategory
+        category: this.newItemCategory,
+        priority: this.newItemPriority
       });
       this.newItem = '';
+      this.newItemPriority = 'normal';
       this.saveToStorage(); 
     }
   }
+  
   
   removeItem(index: number) {
     this.items.splice(index, 1);
