@@ -14,7 +14,7 @@
 
 body {
     background-color: #f5f7fa;
-    color: #333;
+    color: #a18989;
     line-height: 1.6;
 }
 
@@ -201,6 +201,11 @@ button:hover {
 /* Priority indicators */
 .priority-high {
     position: relative;
+}
+
+.priority-toggle{
+    display: flex;
+    justify-content: space-around;
 }
 
 .high-priority {
